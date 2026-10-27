@@ -1,0 +1,9 @@
+{
+  "short_name": "ChecklistGo",
+  "name": "ChecklistGo — offline checklist",
+  "icons": [{ "src": "/check.png", "type": "image/png", "sizes": "any" }],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#2563eb",
+  "background_color": "#eef2f7"
+}

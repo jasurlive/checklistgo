@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/check.png" />
+    <link rel="apple-touch-icon" href="/check.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta
+      name="description"
+      content="A simple offline checklist: add, edit, reorder and tick off items. Saved in your browser."
+    />
+    <title>ChecklistGo</title>
+    <!-- set theme before first paint so dark mode doesn't flash light -->
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem('theme') ||
+          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <noscript>Please enable JavaScript to use ChecklistGo.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/ts/main.tsx"></script>
+  </body>
+</html>
