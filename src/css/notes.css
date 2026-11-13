@@ -1,0 +1,159 @@
+/* notes page: card grid + full-height editor */
+
+.notes-new {
+  height: 2.25rem;
+}
+
+.notes-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elev);
+  color: var(--muted);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.notes-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.notes-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  outline: none;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.notes-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  height: 100%;
+  min-height: 6.5rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-elev);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.notes-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.notes-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: var(--text-strong);
+  overflow-wrap: anywhere;
+}
+
+.notes-pin {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.notes-card-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 0.875rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.notes-card-date {
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.notes-empty kbd {
+  margin: 0 0.1rem;
+}
+
+.notes-undo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.9rem;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--text-strong);
+  font-size: 0.875rem;
+}
+
+/* ---------- editor ---------- */
+
+.notes-editor {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--bar-space, 0px));
+}
+
+.notes-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.notes-saved {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.notes-text {
+  flex: 1;
+  width: 100%;
+  min-height: 50vh;
+  margin-top: 1rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+}
+
+/* first line looks like a title (::first-line works on textarea in most browsers; harmless otherwise) */
+.notes-text::first-line {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.notes-hint {
+  padding-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}

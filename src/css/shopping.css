@@ -1,0 +1,97 @@
+/* shopping page; rows reuse .check-item from checklist.css */
+
+.shop-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.shop-chips-label {
+  align-self: center;
+  margin-right: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.shop-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.4rem 0.25rem 0.7rem;
+  border: 1px dashed var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  font-size: 0.85rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.shop-chip:hover {
+  border-color: var(--accent);
+  border-style: solid;
+  color: var(--accent);
+}
+
+.shop-chip-x {
+  display: flex;
+  padding: 0.1rem;
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.shop-chip-x:hover {
+  background: var(--hover);
+  color: var(--danger);
+}
+
+.shop-qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.shop-qty .check-action {
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+
+.shop-qty .check-action:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.shop-qty-value {
+  min-width: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-strong);
+}
+
+.check-item-done .shop-qty-value {
+  color: var(--muted);
+}
+
+.shop-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.shop-section .page-button {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.shop-section + .check-list {
+  margin-top: 0.5rem;
+}

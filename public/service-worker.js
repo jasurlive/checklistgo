@@ -1,6 +1,6 @@
 // offline cache: pages come from the network when online (cached copy as
 // fallback), built assets are cached on first use
-const CACHE = 'checklistgo-v2'
+const CACHE = 'checklistgo-v3'
 const SHELL = ['/', '/manifest.json', '/check.png']
 
 self.addEventListener('install', (event) => {

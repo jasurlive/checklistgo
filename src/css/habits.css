@@ -1,0 +1,137 @@
+/* habits page */
+
+.habit {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elev);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.habit:hover {
+  border-color: var(--accent);
+}
+
+.habit-check {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  color: transparent;
+  font-size: 1rem;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+}
+
+.habit-check:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.habit-done .habit-check {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.habit-check:active {
+  transform: scale(0.9);
+}
+
+.habit-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.habit-name {
+  overflow-wrap: anywhere;
+  color: var(--text-strong);
+}
+
+.habit-done .habit-name {
+  color: var(--muted);
+}
+
+.habit-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.habit-flame.is-on {
+  color: #f97316;
+}
+
+.habit-week {
+  display: flex;
+  gap: 0.15rem;
+}
+
+.habit-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  width: 1.5rem;
+  padding: 0.15rem 0;
+  border-radius: 6px;
+}
+
+.habit-day:hover {
+  background: var(--hover);
+}
+
+.habit-day-letter {
+  font-size: 0.65rem;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.habit-day.is-today .habit-day-letter {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.habit-day-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+}
+
+.habit-day.is-done .habit-day-dot {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.habit-examples {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* phones: the week goes to its own row under the name */
+@media (max-width: 560px) {
+  .habit {
+    grid-template-columns: auto auto 1fr auto;
+    row-gap: 0.35rem;
+  }
+
+  .habit-week {
+    grid-column: 3 / -1;
+    grid-row: 2;
+  }
+}

@@ -8,23 +8,32 @@ Built on the [django-react](https://github.com/jasurlive/django-react) `front/` 
 
 ## Features
 
+- **Sheets**: as many separate checklists as you want (groceries, work, packing…), each a tab; add, rename (double-click), duplicate, delete
+- **Shopping list** tab: quantities ("2 milk", "eggs x12", +/− buttons), adding an existing item bumps its amount, ticked items move to "In cart", "Buy again" chips from what you add most, copy the list as text
+- **Habits** tab: daily habits that untick every day, streak + best streak, 7-day dots (tap one to fix a past day), drag to reorder, undo / redo
+- **Notes** tab: plain-text notes (first line = title), search, pin to top, delete with undo, empty notes removed automatically
 - Add / edit / delete items, tap an item to tick it off
 - Drag the handle to reorder (mouse, touch, keyboard) — `@dnd-kit`
-- Undo / redo for every change
+- Undo / redo for every change, including deleted sheets (jumps to the sheet that changed)
 - Progress bar, "Clear done", "Clear all"
-- Light / dark theme, sidebar on desktop, bottom bar on mobile
+- 7 themes (light, dark + linen, fjord, matte, charcoal, paper; turn extras off with `VITE_ENABLE_EXTRA_THEMES=false` in `.env`)
+- Settings page: theme picker, fullscreen, backup export / import (JSON: sheets, shopping, habits, notes), shortcuts, tips, ©
+- Liquid-glass sidebar on desktop (collapse state remembered), floating bar on mobile
 - Installable PWA with an offline service worker (production build)
-- Lists saved by ChecklistGo v1 load automatically (same `items` key)
+- Lists saved by ChecklistGo v1/v2 (`items` key) become the first sheet automatically
 
 ## Shortcuts
 
 | Keys | Does |
 | --- | --- |
-| `N` | focus the input |
-| `Enter` / `Esc` | add or save / cancel editing |
+| `N` | focus the input (Notes: new note) |
+| `Enter` / `Esc` | add or save / cancel editing, close a note |
 | `Ctrl+Z` | undo |
 | `Ctrl+Shift+Z`, `Ctrl+Y` | redo |
-| `Ctrl+J` | toggle theme |
+| `Shift+N` | new sheet |
+| `[` / `]` | previous / next sheet |
+| `Ctrl+J` | next theme |
+| `` ` `` | collapse / expand sidebar |
 
 ## Run
 
@@ -47,19 +56,19 @@ Needs Node 20.19+ or 22.12+.
 
 ```
 src/
-├── ts/                    entry: main.tsx (+ service worker), App.tsx (routes)
-└── tools/
-    ├── pages/             Checklist, Help, NotFound
-    ├── components/        Layout, Header, Footer, SortableItem, ErrorBoundary
-    ├── shared/            Menu (sidebar / mobile bar)
-    ├── hooks/LOCAL/       useChecklist, useHistory, useDnd, useShortcuts, useTheme
-    ├── lib/storage.ts     safe localStorage load / save
-    ├── types.ts
-    └── css/               reset, theme, page, menu, header, checklist
-public/                    check.png, manifest.json, service-worker.js
-vercel.json                SPA rewrite so /help works on reload
+├── app/               main.tsx (+ service worker), App.tsx (routes), env.d.ts
+├── pages/             Checklist, Shopping, Habits, Notes, Settings, NotFound
+├── components/        Layout, Header, SheetTabs, SortableItem, ShopRow, HabitRow, ErrorBoundary
+├── shared/            Menu (sidebar / mobile bar), ThemeIcons
+├── hooks/LOCAL/       useSheets, useShopping, useHabits, useNotes, useToday, useHistory, useDnd, useShortcuts, useTheme, useFullscreen
+├── lib/               storage (safe localStorage), dates, themes, types
+└── css/               reset, theme, page, menu, header, checklist, sheets, shopping, habits, notes
+public/                check.png, manifest.json, service-worker.js
+vercel.json            SPA rewrite so /shopping, /notes/… etc. work on reload
 ```
 
-Add a page: create it in `tools/pages`, add a `<Route>` in `src/ts/App.tsx` and an item in `tools/shared/Menu.tsx`.
+localStorage keys: `sheets` (all sheets + items), `active-sheet`, `shopping`, `shopping-frequent`, `habits`, `notes`, `theme`, `menu-collapsed`.
+
+Add a page: create it in `src/pages`, add a `<Route>` in `src/app/App.tsx` and an item in `src/shared/Menu.tsx`.
 
 © 2019–present [jasurlive.uz](https://jasurlive.uz)
