@@ -1,8 +1,8 @@
 # ChecklistGo
 
-<img width="70%" alt="image" src="https://github.com/user-attachments/assets/e21edceb-4047-4286-be92-e07c7834ca05" />
+<img width="60%" alt="image" src="https://github.com/user-attachments/assets/e21edceb-4047-4286-be92-e07c7834ca05" />
 
-<img width="40%" alt="image" src="https://github.com/user-attachments/assets/a502eda4-d759-4cc8-868a-9b8e76e5d2c0" />
+<img width="30%" alt="image" src="https://github.com/user-attachments/assets/a502eda4-d759-4cc8-868a-9b8e76e5d2c0" />
 
 
 
